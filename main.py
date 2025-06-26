@@ -14,10 +14,13 @@ df_all = load_all()
 df1 = df_all.iloc[0:31, 0:10]
 
 # — 表2: B33:C35 —（0-indexベースで行32–34, 列1–2）
-df2 = df_all.iloc[32:35, 1:3].reset_index(drop=True)
+df2 = get_as_dataframe(ws, range="B33:C35", header=None)
+df2.columns = ["商会", "合計値"]
+df2 = df2.reset_index(drop=True)
+
 
 st.title("商会別合計")
-st.dataframe(df2, hide_index=True, use_container_width=True)
+st.dataframe(df2, hide_index=True)
 
 st.title("各階層")
 st.dataframe(df1)
