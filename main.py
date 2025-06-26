@@ -26,8 +26,8 @@ def load_tables():
     return df1, df2
 
 df1, df2 = load_tables()
-st.title("商会別合計 (B33:C35)")
+st.title("商会別合計")
 st.dataframe(df2, hide_index=True, use_container_width=True)
 
-st.title("各階層 (A1:J31)")
+st.title("各階層")
 st.dataframe(df1, use_container_width=True)
