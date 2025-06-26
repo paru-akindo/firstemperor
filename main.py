@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-from google.oauth2.service_account import Credentials
-# ← ここを忘れずに
 from gspread_dataframe import get_as_dataframe
 
 @st.cache_data
