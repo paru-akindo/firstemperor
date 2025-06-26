@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-@st.cache_data
+@st.cache_data(ttl=300)
 def load_tables():
     # 公開シートのCSVエクスポートURL（gidはシートID）
     csv_url = (
