@@ -45,4 +45,4 @@ st.dataframe(df2, hide_index=True, use_container_width=True)
 
 # 表示②：各階層（A1:J31）
 st.title("各階層")
-st.table(df1)
+st.dataframe(df1, use_container_width=True)
