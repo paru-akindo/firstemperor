@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+from google.oauth2.service_account import Credentials
+# ← ここを忘れずに
+from gspread_dataframe import get_as_dataframe
 
 @st.cache_data
 def load_all():
@@ -11,13 +14,11 @@ def load_all():
 df_all = load_all()
 
 # ① A1:J31 (0始まりの iloc で [0:31)×[0:10) を切り出し)
-df1 = df_all.iloc[0:31, 0:10]
+df1 = get_as_dataframe(ws, range="A1:J31", header=0)
 
 # — 表2: B33:C35 —（0-indexベースで行32–34, 列1–2）
-df2 = get_as_dataframe(ws, range="B33:C35", header=None)
+df2 = get_as_dataframe(ws, range="B33:C35", header=None).reset_index(drop=True)
 df2.columns = ["商会", "合計値"]
-df2 = df2.reset_index(drop=True)
-
 
 st.title("商会別合計")
 st.dataframe(df2, hide_index=True)
