@@ -13,12 +13,14 @@ df_all = load_all()
 # ① A1:J31 (0始まりの iloc で [0:31)×[0:10) を切り出し)
 df1 = df_all.iloc[0:31, 0:10]
 
-# ② A33:C35 は 33行目→0始まりでインデックス32、終了は35→インデックス35(排他)まで。
-#    また列は A→0、C→2 なので [32:35, 0:3)
-df2 = df_all.iloc[32:35, 0:3]
+# — 表2: B33:C35 —（0-indexベースで行32–34, 列1–2）
+df2 = df_all.iloc[32:35, 1:3] \
+            .reset_index(drop=True)    # インデックスを 0,1,2... にリセット
 
-st.title("表1: A1:J31")
+st.title("商会別合計")
+st.dataframe(df2.style.hide_index())
+
+st.title("各階層")
 st.dataframe(df1)
 
-st.title("表2: A33:C35")
-st.dataframe(df2)
+
