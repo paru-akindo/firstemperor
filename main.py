@@ -3,7 +3,7 @@ import pandas as pd
 
 @st.cache_data
 def load_tables():
-    csv_url = "https://docs.google.com/spreadsheets/d/…/export?format=csv&gid=236779120"
+    csv_url  = f"https://docs.google.com/spreadsheets/d/e/2PACX-1vTFOIQtAvilcjBplaklTqvDLg5KAYA8jkU9wL8pBEnQurFp9m62Z4rqbTGWPar0Y4keCqYSjm5qTM2t/pub?gid=236779120&single=true&output=csv"
 
     # 表1: 1行目をヘッダー、その後30行分（2–31行目）をA–J列で取得
     df1 = pd.read_csv(
